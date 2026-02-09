@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import type { ProductDetail as ProductDetailData } from '../types';
 import { getProductById, addToCart } from '../services/productService';
-
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -64,74 +64,79 @@ export const ProductDetail = () => {
     const formatCamera = (cam: string | string[]) => Array.isArray(cam) ? cam.join(', ') : cam;
 
     return (
-        <div className="detail-container">
+        <div className="product-detail-page">
 
-            <div className="detail-image-col">
-                <Link to="/" className="back-link">← VOLVER</Link>
-                <div className="detail-image-wrapper">
-                    <img src={product.imgUrl} alt={product.model} />
-                </div>
-            </div>
+            <Breadcrumbs currentName={`${product.brand} ${product.model}`} />
 
-            <div className="detail-info-col">
-                <div className="product-header">
-                    <h2 className="detail-brand">{product.brand}</h2>
-                    <h1 className="detail-model">{product.model}</h1>
-                    <p className="detail-price">{product.price} €</p>
+            <div className="detail-container">
+
+                <div className="detail-image-col">
+                    <Link to="/" className="back-link">← VOLVER</Link>
+                    <div className="detail-image-wrapper">
+                        <img src={product.imgUrl} alt={product.model} />
+                    </div>
                 </div>
 
-                <div className="specs-section" style={{ marginBottom: '40px' }}>
-                    <h3>ESPECIFICACIONES</h3>
-                    <dl className="specs-list">
-                        <div className="spec-item"><dt>CPU</dt><dd>{product.cpu}</dd></div>
-                        <div className="spec-item"><dt>RAM</dt><dd>{product.ram}</dd></div>
-                        <div className="spec-item"><dt>SISTEMA</dt><dd>{product.os}</dd></div>
-                        <div className="spec-item"><dt>PANTALLA</dt><dd>{product.displayResolution}</dd></div>
-                        <div className="spec-item"><dt>BATERÍA</dt><dd>{product.battery}</dd></div>
-                        <div className="spec-item"><dt>CÁMARAS</dt><dd>{formatCamera(product.primaryCamera)}</dd></div>
-                        <div className="spec-item"><dt>DIMENSIONES</dt><dd>{product.dimentions}</dd></div>
-                        <div className="spec-item"><dt>PESO</dt><dd>{product.weight} g</dd></div>
-                    </dl>
-                </div>
-
-                <div className="action-area" style={{ borderTop: '1px solid #000', paddingTop: '30px' }}>
-                    <div className="options-section">
-                        <div className="option-group">
-                            <label>ALMACENAMIENTO</label>
-                            <div className="selector-grid">
-                                {product.options.storages.map((storage) => (
-                                    <button
-                                        key={storage.code}
-                                        className={`option-btn ${selectedStorage === storage.code ? 'selected' : ''}`}
-                                        onClick={() => setSelectedStorage(storage.code)}
-                                    >
-                                        {storage.name}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="option-group">
-                            <label>COLOR</label>
-                            <div className="selector-grid">
-                                {product.options.colors.map((color) => (
-                                    <button
-                                        key={color.code}
-                                        className={`option-btn ${selectedColor === color.code ? 'selected' : ''}`}
-                                        onClick={() => setSelectedColor(color.code)}
-                                    >
-                                        {color.name}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                <div className="detail-info-col">
+                    <div className="product-header">
+                        <h2 className="detail-brand">{product.brand}</h2>
+                        <h1 className="detail-model">{product.model}</h1>
+                        <p className="detail-price">{product.price} €</p>
                     </div>
 
-                    <button className="add-cart-btn" onClick={handleAddToCart}>
-                        AÑADIR A LA CESTA
-                    </button>
-                </div>
+                    <div className="specs-section" style={{ marginBottom: '40px' }}>
+                        <h3>ESPECIFICACIONES</h3>
+                        <dl className="specs-list">
+                            <div className="spec-item"><dt>CPU</dt><dd>{product.cpu}</dd></div>
+                            <div className="spec-item"><dt>RAM</dt><dd>{product.ram}</dd></div>
+                            <div className="spec-item"><dt>SISTEMA</dt><dd>{product.os}</dd></div>
+                            <div className="spec-item"><dt>PANTALLA</dt><dd>{product.displayResolution}</dd></div>
+                            <div className="spec-item"><dt>BATERÍA</dt><dd>{product.battery}</dd></div>
+                            <div className="spec-item"><dt>CÁMARAS</dt><dd>{formatCamera(product.primaryCamera)}</dd></div>
+                            <div className="spec-item"><dt>DIMENSIONES</dt><dd>{product.dimentions}</dd></div>
+                            <div className="spec-item"><dt>PESO</dt><dd>{product.weight} g</dd></div>
+                        </dl>
+                    </div>
 
+                    <div className="action-area" style={{ borderTop: '1px solid #000', paddingTop: '30px' }}>
+                        <div className="options-section">
+                            <div className="option-group">
+                                <label>ALMACENAMIENTO</label>
+                                <div className="selector-grid">
+                                    {product.options.storages.map((storage) => (
+                                        <button
+                                            key={storage.code}
+                                            className={`option-btn ${selectedStorage === storage.code ? 'selected' : ''}`}
+                                            onClick={() => setSelectedStorage(storage.code)}
+                                        >
+                                            {storage.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="option-group">
+                                <label>COLOR</label>
+                                <div className="selector-grid">
+                                    {product.options.colors.map((color) => (
+                                        <button
+                                            key={color.code}
+                                            className={`option-btn ${selectedColor === color.code ? 'selected' : ''}`}
+                                            onClick={() => setSelectedColor(color.code)}
+                                        >
+                                            {color.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        <button className="add-cart-btn" onClick={handleAddToCart}>
+                            AÑADIR A LA CESTA
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </div>
     );

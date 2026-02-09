@@ -13,3 +13,10 @@ export interface CartItemState {
     color: string;
     storage: string;
 }
+
+export interface CardVisualData {
+    number: string;
+    name: string;
+    expiry: string;
+    cvc: string;
+}

@@ -1,17 +1,11 @@
 import { useMemo } from 'react';
+import type { CardVisualData } from '../types';
 
-interface CardVisualProps {
-    number: string;
-    name: string;
-    expiry: string;
-    cvc: string;
-}
+export const CardVisual = ({ number, name, expiry, cvc }: CardVisualData) => {
 
-export const CardVisual = ({ number, name, expiry, cvc }: CardVisualProps) => {
-
-    // Formatear número con espacios
     const formattedNumber = useMemo(() => {
-        const num = number.padEnd(16, '•');
+        const safeNumber = number || '';
+        const num = safeNumber.padEnd(16, '•');
         return num.match(/.{1,4}/g)?.join(' ') || num;
     }, [number]);
 
@@ -19,7 +13,6 @@ export const CardVisual = ({ number, name, expiry, cvc }: CardVisualProps) => {
         <div className="card-visual">
             <div className="card-shine"></div>
 
-            {/* Chip simulado */}
             <div className="card-chip">
                 <div className="chip-line"></div>
                 <div className="chip-line"></div>
@@ -34,7 +27,7 @@ export const CardVisual = ({ number, name, expiry, cvc }: CardVisualProps) => {
             <div className="card-details">
                 <div className="card-holder">
                     <label>TITULAR</label>
-                    <div>{name || 'NOMBRE APELLIDO'}</div>
+                    <div className="ellipsis-text">{name || 'NOMBRE APELLIDO'}</div>
                 </div>
                 <div className="card-expires">
                     <label>EXPIRA</label>
