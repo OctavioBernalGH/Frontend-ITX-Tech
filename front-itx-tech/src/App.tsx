@@ -6,6 +6,7 @@ import './App.css';
 import { CartProvider } from './context/CartContext';
 import { CartPage } from './pages/CartPage';
 import { ToastProvider } from './context/ToastContext';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route index element={<ProductList />} />
               <Route path="product/:id" element={<ProductDetail />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>

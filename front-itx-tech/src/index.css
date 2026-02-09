@@ -15,14 +15,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- HEADER ZARA STYLE --- */
 .header {
   background-color: var(--white);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 0 20px;
-  /* Padding base para móvil */
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
 }
@@ -33,7 +31,6 @@ body {
 
 .header nav {
   height: 70px;
-  /* Un poco más compacto en móvil */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,7 +38,6 @@ body {
 
 .logo a {
   font-size: 1.5rem;
-  /* Tamaño base móvil */
   font-weight: 900;
   text-decoration: none;
   color: var(--black);
@@ -60,7 +56,6 @@ body {
   gap: 8px;
 }
 
-/* --- BUSCADOR --- */
 .actions-bar {
   padding: 20px;
   display: flex;
@@ -72,7 +67,6 @@ body {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
   width: 100%;
-  /* En móvil ocupa todo el ancho */
   font-size: 0.9rem;
   outline: none;
   transition: border-color 0.3s, width 0.3s;
@@ -91,26 +85,18 @@ body {
   letter-spacing: 1px;
 }
 
-/* --- LAYOUT CONTAINER --- */
 .app-container {
   max-width: 1800px;
   margin: 0 auto;
 }
 
-/* --- GRID SYSTEM (LÓGICA RESPONSIVE) --- 
-   Estrategia Mobile-First: Empezamos con 1 columna y subimos.
-*/
-
 .product-grid {
   display: grid;
-  /* MÓVIL (Por defecto): 1 Columna */
   grid-template-columns: 1fr;
   gap: 40px;
-  /* Espacio vertical entre productos en móvil */
   padding: 0 20px 60px 20px;
 }
 
-/* TABLET (Min 600px): 2 Columnas */
 @media (min-width: 600px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -120,11 +106,8 @@ body {
   .search-input {
     width: 250px;
   }
-
-  /* El buscador recupera tamaño fijo */
 }
 
-/* LAPTOP / TABLET GRANDE (Min 900px): 3 Columnas */
 @media (min-width: 900px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -144,7 +127,6 @@ body {
   }
 }
 
-/* ESCRITORIO (Min 1200px): 4 Columnas (Tu requisito) */
 @media (min-width: 1200px) {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -153,7 +135,6 @@ body {
   }
 }
 
-/* --- PRODUCT ITEM (EDITORIAL) --- */
 .product-item {
   display: flex;
   flex-direction: column;
@@ -162,7 +143,6 @@ body {
 
 .image-container {
   height: 350px;
-  /* Altura en móvil */
   width: 100%;
   display: flex;
   align-items: center;
@@ -173,7 +153,6 @@ body {
   overflow: hidden;
 }
 
-/* En pantallas grandes, las imágenes son más altas para impacto visual */
 @media (min-width: 900px) {
   .image-container {
     height: 450px;
@@ -223,19 +202,15 @@ body {
   margin-left: 10px;
 }
 
-/* --- BOTONES MINIMALISTAS (ACTUALIZADO) --- */
 .item-actions {
   display: flex;
   flex-direction: row;
-  /* Pone los botones en línea */
   gap: 10px;
-  /* Espacio entre ellos */
   margin-top: auto;
 }
 
 .btn {
   flex: 1;
-  /* Ambos botones ocupan el mismo ancho (50% / 50%) */
   padding: 12px 0;
   text-align: center;
   text-decoration: none;
@@ -247,7 +222,6 @@ body {
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
-  /* Para centrar texto perfectamente */
   justify-content: center;
   align-items: center;
 }
@@ -266,13 +240,11 @@ body {
   background-color: transparent;
   color: var(--black);
   border: 1px solid var(--black);
-  /* Borde negro fino estilo Zara */
 }
 
 .btn-secondary:hover {
   background-color: #f0f0f0;
   text-decoration: none;
-  /* Quitamos subrayado, mejor fondo gris */
 }
 
 .btn:disabled {
@@ -280,26 +252,19 @@ body {
   cursor: not-allowed;
 }
 
-/* --- BARRA DE ACCIONES (Mejorada) --- */
 .actions-bar {
   padding: 30px 40px;
-  /* Un poco más de aire */
   display: flex;
   justify-content: flex-end;
-  /* Alineado a la derecha */
   align-items: center;
   gap: 20px;
-  /* Espacio entre el select y el input */
   flex-wrap: wrap;
-  /* Para que baje en móviles */
 }
 
-/* Estilo para el SELECT (Igual que el input) */
 .sort-select {
   border: none;
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
-  /* Sin padding lateral */
   width: 200px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -309,8 +274,6 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   appearance: none;
-  /* Quita la flecha por defecto del sistema */
-  /* Truco para añadir una flecha minimalista personalizada */
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: right 0 center;
@@ -327,15 +290,12 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  /* Reducido de 40px a 20px para que quepan todos */
   padding: 40px 0 80px 0;
   font-size: 0.75rem;
-  /* Un pelín más pequeño para que quede elegante */
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   flex-wrap: wrap;
-  /* Importante: si no cabe en móvil, que baje de línea */
 }
 
 .pagination button {
@@ -365,13 +325,10 @@ body {
   color: var(--text-grey);
 }
 
-/* RESPONSIVE */
 @media (max-width: 600px) {
   .actions-bar {
     flex-direction: column-reverse;
-    /* Pone el buscador arriba en móviles */
     align-items: stretch;
-    /* Ocupan todo el ancho */
     padding: 20px;
   }
 
@@ -381,15 +338,12 @@ body {
   }
 }
 
-/* --- VISTA DE DETALLE (EDITORIAL STYLE) --- */
-
 .detail-container {
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
 }
 
-/* Columna Izquierda (Imagen) */
 .detail-image-col {
   flex: 1;
   min-width: 300px;
@@ -402,12 +356,10 @@ body {
   justify-content: center;
 }
 
-/* Efecto Sticky en escritorio: La imagen te sigue */
 @media (min-width: 900px) {
   .detail-image-col {
     position: sticky;
     top: 70px;
-    /* Altura del header */
     height: calc(100vh - 70px);
     border-right: 1px solid #eee;
   }
@@ -442,7 +394,6 @@ body {
   z-index: 10;
 }
 
-/* Columna Derecha (Info) */
 .detail-info-col {
   flex: 1;
   min-width: 300px;
@@ -478,7 +429,6 @@ body {
   margin: 0;
 }
 
-/* Selectores */
 .options-section {
   margin-bottom: 40px;
 }
@@ -522,7 +472,6 @@ body {
   color: var(--white);
 }
 
-/* Botón Añadir */
 .add-cart-btn {
   width: 100%;
   padding: 18px;
@@ -542,7 +491,6 @@ body {
   background-color: #333;
 }
 
-/* Especificaciones (Tabla limpia) */
 .specs-section h3 {
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -586,7 +534,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* Responsive Móvil */
 @media (max-width: 768px) {
   .detail-container {
     flex-direction: column;
@@ -601,7 +548,6 @@ body {
   }
 }
 
-/* --- VISTA CARRITO --- */
 .cart-item {
   display: flex;
   align-items: center;
@@ -683,7 +629,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* --- MODAL EDITORIAL (ZARA STYLE) --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -691,7 +636,6 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-  /* Fondo blanco translúcido */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -704,7 +648,6 @@ body {
   width: 100%;
   max-width: 450px;
   border: 1px solid black;
-  /* Borde negro fino */
   position: relative;
   padding: 40px;
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -771,7 +714,6 @@ body {
   mix-blend-mode: multiply;
 }
 
-/* Selectores del Modal */
 .selector-group {
   margin-bottom: 25px;
 }
@@ -828,13 +770,11 @@ body {
   letter-spacing: 2px;
 }
 
-/* --- TOASTER MODERNO --- */
 .toast-notification {
   position: fixed;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%) translateY(100px);
-  /* Empieza oculto abajo */
   background-color: #000000;
   color: #ffffff;
   padding: 16px 30px;
@@ -843,23 +783,18 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   z-index: 3000;
-  /* Por encima de todo, incluso modales */
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   min-width: 300px;
   text-align: center;
   pointer-events: none;
-  /* Para que no bloquee clics si es transparente */
 }
 
 .toast-notification.show {
   transform: translateX(-50%) translateY(0);
-  /* Sube a su sitio */
   opacity: 1;
 }
-
-/* --- ESTILOS ESPECÍFICOS PAGINA CARRITO --- */
 
 .cart-page-container {
   max-width: 800px;
@@ -874,7 +809,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Estado Vacío */
 .empty-cart-container {
   text-align: center;
   padding: 100px 20px;
@@ -893,7 +827,6 @@ body {
   padding: 15px 40px;
 }
 
-/* --- ESTILOS DE PAGO --- */
 .payment-input {
   width: 100%;
   padding: 12px 15px;
@@ -912,7 +845,6 @@ body {
   padding: 10px 0;
 }
 
-/* --- TARJETA DE CRÉDITO CUSTOM (CSS PURO) --- */
 .card-visual {
   width: 300px;
   height: 180px;
@@ -923,14 +855,12 @@ body {
   position: relative;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   font-family: 'Courier New', Courier, monospace;
-  /* Fuente tipo tarjeta */
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   margin-bottom: 30px;
   overflow: hidden;
   border: 1px solid #333;
 }
 
-/* Efecto de brillo */
 .card-shine {
   position: absolute;
   top: 0;
@@ -952,7 +882,6 @@ body {
   overflow: hidden;
 }
 
-/* Líneas del chip */
 .chip-line {
   position: absolute;
   background: rgba(0, 0, 0, 0.2);
@@ -1015,4 +944,104 @@ body {
 .card-details div {
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+.not-found-container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.not-found-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.error-code {
+  font-size: 15rem;
+  line-height: 0.8;
+  font-weight: 900;
+  margin: 0;
+  color: transparent;
+  -webkit-text-stroke: 3px #000;
+  animation: floatUp 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.error-title {
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  display: inline-block;
+  padding: 0 20px;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.error-desc {
+  font-size: 0.9rem;
+  color: #666;
+  max-width: 400px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+
+  animation: fadeIn 1s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+.btn-fashion-back {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 18px 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  border: 1px solid #000;
+  transition: all 0.3s ease;
+  animation: fadeIn 1s ease-out 1s forwards;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.btn-fashion-back:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+@keyframes floatUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 8rem;
+    -webkit-text-stroke: 2px #000;
+  }
+
+  .error-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
 }
