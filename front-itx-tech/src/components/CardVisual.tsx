@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import type { CardVisualData } from '../types';
 
-export const CardVisual = ({ number, name, expiry, cvc }: CardVisualData) => {
+export const CardVisual = ({ number, name, expiry }: CardVisualData) => {
 
     const formattedNumber = useMemo(() => {
         const safeNumber = number || '';
