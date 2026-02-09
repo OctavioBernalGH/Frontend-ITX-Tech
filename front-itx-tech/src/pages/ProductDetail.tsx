@@ -5,6 +5,7 @@ import { getProductById, addToCart } from '../services/productService';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { useSEO } from '../hooks/useSEO';
 
 export const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -14,6 +15,11 @@ export const ProductDetail = () => {
     const { showToast } = useToast();
     const [selectedColor, setSelectedColor] = useState<number | null>(null);
     const [selectedStorage, setSelectedStorage] = useState<number | null>(null);
+
+    useSEO({
+        title: product ? `${product.brand} ${product.model} | ZARA PHONE` : 'Cargando...',
+        description: product ? `Compra el ${product.brand} ${product.model} al mejor precio.` : ''
+    });
 
     useEffect(() => {
         if (id) {

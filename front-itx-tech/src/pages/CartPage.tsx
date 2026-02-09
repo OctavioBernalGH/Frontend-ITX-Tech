@@ -1,15 +1,21 @@
-import { useMemo, useState } from 'react'; // Importar useState
-import { Link, useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { useToast } from '../context/ToastContext'; // Importar Toast
+import { useToast } from '../context/ToastContext';
 import { CartItemRow } from '../components/CardItemRow';
-import { CheckoutModal } from '../components/CheckoutModal'; // Importar Modal
+import { CheckoutModal } from '../components/CheckoutModal';
+import { useSEO } from '../hooks/useSEO';
 
 export const CartPage = () => {
-    const { cartItems, removeFromCart, clearCart } = useCart(); // Traer clearCart
+    const { cartItems, removeFromCart, clearCart } = useCart();
     const { showToast } = useToast();
     const navigate = useNavigate();
-    const [isCheckoutOpen, setIsCheckoutOpen] = useState(false); // Estado del modal
+    const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+    useSEO({
+        title: `Cesta (${cartItems.length}) | ZARA PHONE`,
+        description: 'Revisa tu selección de productos y finaliza tu compra de forma segura.'
+    });
 
     const totalPrice = useMemo(() => {
         return cartItems.reduce((acc, item) => {
@@ -20,14 +26,23 @@ export const CartPage = () => {
 
     const handlePaymentSuccess = () => {
         setIsCheckoutOpen(false);
-        clearCart(); // Vaciar carrito
+        clearCart();
         showToast("¡PAGO REALIZADO CON ÉXITO!");
-        navigate('/'); // Volver al inicio
+        navigate('/');
     };
 
-    // ... (Bloque de carrito vacío igual que antes) ...
+
     if (cartItems.length === 0) {
-        // ...
+        return (
+            <div className="empty-cart-container" style={{ textAlign: 'center', padding: '100px 20px' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '30px', letterSpacing: '1px' }}>
+                    TU CESTA ESTÁ VACÍA
+                </h2>
+                <Link to="/" className="btn-fashion-back">
+                    VOLVER A LA TIENDA
+                </Link>
+            </div>
+        );
     }
 
     return (
@@ -49,7 +64,6 @@ export const CartPage = () => {
                 <span>{totalPrice} €</span>
             </div>
 
-            {/* Botón que abre el modal */}
             <button
                 className="checkout-btn"
                 onClick={() => setIsCheckoutOpen(true)}
@@ -57,7 +71,6 @@ export const CartPage = () => {
                 TRAMITAR PEDIDO
             </button>
 
-            {/* Renderizado condicional del Modal */}
             {isCheckoutOpen && (
                 <CheckoutModal
                     total={totalPrice}

@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import type { Product } from '../types';
 import { getProducts, filterProducts } from '../services/productService';
 import { ProductItem } from '../components/ProductItem';
+import { useSEO } from '../hooks/useSEO';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -10,6 +11,11 @@ export const ProductList = () => {
     const [search, setSearch] = useState('');
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | ''>('');
     const [currentPage, setCurrentPage] = useState(1);
+
+    useSEO({
+        title: 'Catálogo de Móviles | ZARA PHONE',
+        description: 'Descubre nuestra colección exclusiva de teléfonos móviles y tecnología con el mejor diseño y prestaciones.'
+    });
 
     useEffect(() => {
         getProducts().then(setProducts);
