@@ -42,7 +42,7 @@ Se han implementado tests unitarios para validar la robustez de los servicios cr
 
 Ejecutar el proyecto:
 ```bash
-npm run dev
+npm start
 ```
 
 Ejecutar los tests:
