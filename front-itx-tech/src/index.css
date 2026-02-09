@@ -892,3 +892,127 @@ body {
   width: auto;
   padding: 15px 40px;
 }
+
+/* --- ESTILOS DE PAGO --- */
+.payment-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.payment-input:focus {
+  border-color: black;
+}
+
+.payment-container {
+  padding: 10px 0;
+}
+
+/* --- TARJETA DE CRÉDITO CUSTOM (CSS PURO) --- */
+.card-visual {
+  width: 300px;
+  height: 180px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  border-radius: 15px;
+  color: white;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  font-family: 'Courier New', Courier, monospace;
+  /* Fuente tipo tarjeta */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+/* Efecto de brillo */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0) 50%);
+  pointer-events: none;
+}
+
+.card-chip {
+  width: 45px;
+  height: 35px;
+  background: linear-gradient(135deg, #d4af37 0%, #a88825 100%);
+  /* Oro */
+  border-radius: 6px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Líneas del chip */
+.chip-line {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  height: 1px;
+  width: 100%;
+}
+
+.chip-line:nth-child(1) {
+  top: 33%;
+}
+
+.chip-line:nth-child(2) {
+  top: 66%;
+}
+
+.chip-line:nth-child(3) {
+  left: 33%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.chip-line:nth-child(4) {
+  left: 66%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.card-logo {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.card-number {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.card-details label {
+  font-size: 0.5rem;
+  color: #aaa;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.card-details div {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
